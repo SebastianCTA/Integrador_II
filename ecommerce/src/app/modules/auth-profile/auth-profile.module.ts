@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { SharedModule } from "../../shared/shared.module";
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { HomeModule} from "../home/home.module"
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    HomeModule,
 ]
 })
 export class AuthProfileModule { }
