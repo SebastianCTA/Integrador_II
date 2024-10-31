@@ -26,5 +26,55 @@ export const AsideMenuAdminGeneral = {
           }
         ]
       },
+      { section: 'Productos' },
+      {
+        title: 'Categorias',
+        root: true,
+        name: "categorias",
+        bullet: 'dot',
+        icon: 'flaticon2-user-outline-symbol',
+        svg: './assets/media/svg/icons/Home/Commode2.svg',
+        page: '/categorias',
+        submenu: [
+          {
+            title: 'Lista Categorias',
+            page: '/categorias/list'
+          }
+        ]
+      },
+      {
+        title: 'Productos',
+        root: true,
+        name: "productos",
+        bullet: 'dot',
+        icon: 'flaticon2-user-outline-symbol',
+        svg: './assets/media/svg/icons/Clothes/T-Shirt.svg',
+        page: '/productos',
+        submenu: [
+          {
+            title: 'Crear Producto',
+            page: '/productos/registrar-producto'
+          },
+          {
+            title: 'Lista Productos',
+            page: '/productos/lista-de-todos-los-productos'
+          },
+        ]
+      },
+      {
+        title: 'Sliders',
+        root: true,
+        name: "sliders",
+        bullet: 'dot',
+        icon: 'flaticon2-user-outline-symbol',
+        svg: './assets/media/svg/icons/Design/Image.svg',
+        page: '/sliders',
+        submenu: [
+          {
+            title: 'Lista Sliders',
+            page: '/sliders/lista-sliders'
+          }
+        ]
+      },
     ]
 }

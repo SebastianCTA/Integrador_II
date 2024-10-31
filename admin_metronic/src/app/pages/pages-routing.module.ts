@@ -68,6 +68,27 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'categorias',
+        loadChildren: () =>
+          import('../modules/categories/categories.module').then(
+            (m) => m.CategoriesModule
+          ),
+      },
+      {
+        path: 'productos',
+        loadChildren: () =>
+          import('../modules/product/product.module').then(
+            (m) => m.ProductModule
+          ),
+      },
+      {
+        path: 'sliders',
+        loadChildren: () =>
+          import('../modules/sliders/sliders.module').then(
+            (m) => m.SlidersModule
+          ),
+      },
+      {
         path: '',
         redirectTo: '/dashboard',
         pathMatch: 'full',

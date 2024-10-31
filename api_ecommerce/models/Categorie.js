@@ -8,5 +8,5 @@ const CategorieSchema = new Schema({
     timestamps: true
 });
 
-const Categorie = mongoose.model("categoria",CategorieSchema);
+const Categorie = mongoose.model("categorie",CategorieSchema);
 export default Categorie;

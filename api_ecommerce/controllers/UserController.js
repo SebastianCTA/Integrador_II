@@ -71,7 +71,7 @@ export default {
                     })
                 }else{
                     res.status(500).send({
-                        message: "EL USUARIO NO EXISTE"
+                        message: "TOKEN VACIO"
                     });
                 }
             }else{

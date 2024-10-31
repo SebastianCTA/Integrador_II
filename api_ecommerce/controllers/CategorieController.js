@@ -1,5 +1,7 @@
 import models from '../models'
 import resource from '../resources'
+import fs from 'fs'
+import path from 'path'
 export default {
     register: async(req,res) => {
         try {
@@ -23,7 +25,7 @@ export default {
     
     update: async(req,res) => {
         try {
-            if(req.files){
+            if(req.files && req.files.portada){
                 var img_path = req.files.portada.path;
                 var name = img_path.split('\\');
                 var portada_name = name[2];
@@ -35,7 +37,7 @@ export default {
             let CategorieT = await models.Categorie.findOne({_id: req.body._id});
             res.status(200).json({
                 message: "LA CATEGORIA SE HA MODIFICADO CORRECTAMENTE",
-                categorie: resource.Categorie.user_list(CategorieT),
+                categorie: resource.Categorie.categorie_list(CategorieT),
             });
         } catch (error) {
             res.status(500).send({
@@ -58,8 +60,28 @@ export default {
             }) 
 
             res.status(200).json({
-                Categories: Categories
+                categories: Categories
             });
+        } catch (error) {
+            res.status(500).send({
+                message: "OCURRIO UN PROBLEMA"
+            });
+            console.log(error);
+        }
+    },
+    obtener_imagen: async(req,res)=>{
+        try {
+            var img = req.params['img'];
+
+            fs.stat('./uploads/categorie/'+img, function(err){
+                if(!err){
+                    let path_img = './uploads/categorie/'+img;
+                    res.status(200).sendFile(path.resolve(path_img));
+                }else{
+                    let path_img = './uploads/default.jpg';
+                    res.status(200).sendFile(path.resolve(path_img));
+                }
+            })
         } catch (error) {
             res.status(500).send({
                 message: "OCURRIO UN PROBLEMA"
