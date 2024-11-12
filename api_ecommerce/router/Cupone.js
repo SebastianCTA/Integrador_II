@@ -5,8 +5,10 @@ import auth from '../middlewares/auth'
 const router = routerx();
 
 router.post("/register",auth.verifyAdmin,cuponeController.register);
-router.post("/update",auth.verifyAdmin,cuponeController.update);
-router.post("/list",auth.verifyAdmin,cuponeController.list);
-router.post("/delete",auth.verifyAdmin,cuponeController.delete);
+router.put("/update",auth.verifyAdmin,cuponeController.update);
+router.get("/list",auth.verifyAdmin,cuponeController.list);
+router.get("/config",auth.verifyAdmin,cuponeController.config);
+router.get("/show",auth.verifyAdmin,cuponeController.show);
+router.delete("/delete",auth.verifyAdmin,cuponeController.delete);
 
 export default router;

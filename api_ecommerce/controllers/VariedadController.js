@@ -7,10 +7,10 @@ export default {
 
             let variedad_exits = await models.Variedad.findOne({valor: data.valor, product: data.product});
             var variedad = null;
-            if (variedad_exits) {
+            if(variedad_exits){
                 data.stock = variedad_exits.stock + data.stock;
-                await models.Variedad.findByIdAndUpdate({_id: variedad_exits._id}, data);
-                variedad = await models.Variedad.findById({_id: variedad_exits._id})
+                await models.Variedad.findByIdAndUpdate({_id: variedad_exits._id},data);
+                variedad = await models.Variedad.findById({_id: variedad_exits._id});
             }else{
                 variedad = await models.Variedad.create(data);
             }
@@ -31,18 +31,17 @@ export default {
 
             await models.Variedad.findByIdAndUpdate({_id:data._id},data);
 
-            let variedad = await models.Variedad.findById({_id: data._id})
+            let variedad = await models.Variedad.findById({_id: data._id});
 
             res.status(200).json({
                 variedad: variedad
-            })
+            });
         } catch (error) {
             res.status(500).send({
                 message: "OCURRIO UN PROBLEMA"
             });
             console.log(error);
         }
-
     },
     delete:async(req,res) => {
         try {
@@ -52,7 +51,7 @@ export default {
 
             res.status(200).json({
                 message: "SE ELIMINO LA VARIEDAD"
-            })
+            });
         } catch (error) {
             res.status(500).send({
                 message: "OCURRIO UN PROBLEMA"

@@ -29,6 +29,7 @@ export class EditNewProductComponent implements OnInit {
   imagen_previsualizacion: any = null;
   resumen: any = null;
   description: any = null;
+  state: any=1;
   //
   tag:any = null;
   tags: any = [];
@@ -46,7 +47,6 @@ export class EditNewProductComponent implements OnInit {
   imagen_file_galeria: any = null;
   galerias: any = [];
 
-  state: any = null;
   constructor(
     public _productService:ProductService,
     public router:Router,

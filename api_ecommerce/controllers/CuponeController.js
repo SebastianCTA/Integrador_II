@@ -85,12 +85,11 @@ export default{
         try {
             let search = req.query.search;
 
-            let cupones = await models.Cupone.fin({
+            let cupones = await models.Cupone.find({
             $or:[
                 {"code": new RegExp(search, "i")},
             ]
         }).sort({'createdAt': -1});
-         
 
             res.status(200).json({
                 message: 200,
@@ -104,5 +103,40 @@ export default{
         }
     },
 
+    show: async(req,res) => {
+        try {
+            let cupone_id = req.query.cupone_id;
+
+            let cupon = await models.Cupone.findOne({_id: cupone_id});
+
+            res.status(200).json({
+                message: 200,
+                cupon: cupon,
+            });
+
+        } catch (error) {
+            res.status(500).send({
+                message: "OCURRIO UN ERROR",
+            });
+        }
+    },
+    config: async(req,res) => {
+        try {
+
+            let Products = await models.Product.find({state: 2});
+            let Categories = await models.Categorie.find({state: 1});
+
+            res.status(200).json({
+                message: 200,
+                products: Products,
+                categories: Categories,
+            });
+
+        } catch (error) {
+            res.status(500).send({
+                message: "OCURRIO UN ERROR",
+            });
+        }
+    },
 
 }

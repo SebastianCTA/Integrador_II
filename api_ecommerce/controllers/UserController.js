@@ -16,7 +16,7 @@ export default {
             res.status(200).json(user);
         } catch (error) {
             res.status(500).send({
-                message: "OCURRIO UN PROBLEMA",
+                message: "OCURRIO UN PROBLEMA"
             });
             console.log(error);
         }
@@ -29,9 +29,9 @@ export default {
             // email
             // password
             const userV = await models.User.findOne({email: req.body.email});
-            if (userV) {
+            if(userV){
                 res.status(500).send({
-                    message: "EL USUARIO YA EXISTE",
+                    message: "EL USUARIO YA EXISTE"
                 });
             }
             req.body.rol = "admin";
@@ -42,7 +42,7 @@ export default {
             });
         } catch (error) {
             res.status(500).send({
-                message: "OCURRIO UN PROBLEMA",
+                message: "OCURRIO UN PROBLEMA"
             });
             console.log(error);
         }
@@ -59,6 +59,7 @@ export default {
                     const USER_FRONTED = {
                         token:tokenT,
                         user: {
+                            _id: user._id,
                             name: user.name,
                             email: user.email,
                             surname: user.surname,
@@ -71,7 +72,7 @@ export default {
                     })
                 }else{
                     res.status(500).send({
-                        message: "TOKEN VACIO"
+                        message: "EL USUARIO NO EXISTE"
                     });
                 }
             }else{
@@ -164,7 +165,7 @@ export default {
 
             Users = Users.map((user) => {
                 return resource.User.user_list(user);
-            }) 
+            })
 
             res.status(200).json({
                 users: Users
